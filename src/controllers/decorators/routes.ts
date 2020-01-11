@@ -1,11 +1,12 @@
+import { MetadataKeys } from './MetadataKeys';
 import { Methods } from './Methods';
 import 'reflect-metadata';
 
 function routeBinder(method: string) {
   return function(path: string) {
     return function(target: any, key: string, desc: PropertyDescriptor) {
-      Reflect.defineMetadata('path', path, target, key);
-      Reflect.defineMetadata('method', 'get', target, key);
+      Reflect.defineMetadata(MetadataKeys.path, path, target, key);
+      Reflect.defineMetadata(MetadataKeys.method, 'get', target, key);
     };
   };
 }
