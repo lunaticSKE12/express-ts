@@ -1,10 +1,9 @@
+import { AppRoute } from './../../AppRoute';
 import 'reflect-metadata';
-import express from 'express';
-import { router } from '../../routes/loginRoutes';
 
-export const route = express.Router();
 export function controller(routePrefix: string) {
   return function(target: Function) {
+    const router = AppRoute.getInstance();
     for (let key in target.prototype) {
       const routeHandler = target.prototype[key];
 
